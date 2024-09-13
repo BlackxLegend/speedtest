@@ -1,7 +1,7 @@
 /*
-	LibreSpeed - Worker
+	UrSpeeD - Worker
 	by Federico Dossena
-	https://github.com/librespeed/speedtest/
+	https://vyturex.com/
 	GNU LGPLv3 License
 */
 

@@ -43,7 +43,7 @@ COPY docker/*.php /speedtest/
 COPY docker/entrypoint.sh /
 
 # Prepare default environment variables
-ENV TITLE=LibreSpeed
+ENV TITLE=UrSpeeD
 ENV MODE=standalone
 ENV PASSWORD=password
 ENV TELEMETRY=false

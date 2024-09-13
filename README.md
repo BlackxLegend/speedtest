@@ -1,6 +1,6 @@
-![LibreSpeed Logo](https://github.com/librespeed/speedtest/blob/master/.logo/logo3.png?raw=true)
+![UrSpeeD Logo](https://vyturex.com/blob/master/.logo/logo3.png?raw=true)
 
-# LibreSpeed
+# UrSpeeD
 
 No Flash, No Java, No Websocket, No Bullshit.
 
@@ -8,7 +8,7 @@ This is a very lightweight speed test implemented in Javascript, using XMLHttpRe
 
 ## Try it
 
-[Take a speed test](https://librespeed.org)
+[Take a speed test](https://UrSpeeD.org)
 
 ## Compatibility
 
@@ -47,30 +47,30 @@ Assuming you have PHP and a web server installed, the installation steps are qui
 
 ### Installation Video
 
-This video shows the installation process of a standalone LibreSpeed server: [Quick start installation guide for Debian 12](https://fdossena.com/?p=speedtest/quickstart_deb12.frag)
+This video shows the installation process of a standalone UrSpeeD server: [Quick start installation guide for Debian 12](https://fdossena.com/?p=speedtest/quickstart_deb12.frag)
 
 More videos will be added later.
 
 ## Android app
 
-A template to build an Android client for your LibreSpeed installation is available [here](https://github.com/librespeed/speedtest-android).
+A template to build an Android client for your UrSpeeD installation is available [here](https://vyturex.com-android).
 
 ## CLI client
 
-A command line client is available [here](https://github.com/librespeed/speedtest-cli).
+A command line client is available [here](https://vyturex.com-cli).
 
 ## Docker
 
-A docker image is available on [GitHub](https://github.com/librespeed/speedtest/pkgs/container/speedtest), check our [docker documentation](doc_docker.md) for more info about it.
+A docker image is available on [GitHub](https://vyturex.com/pkgs/container/speedtest), check our [docker documentation](doc_docker.md) for more info about it.
 The image is built every week to include an updated version of the ipinfo-DB used for ISP detection. Also this ensures, that the latest security patches in PHP are installed. Therefore we recommend to use the `latest` image.
 
 ## Go backend
 
-A Go implementation is available in the [`speedtest-go`](https://github.com/librespeed/speedtest-go) repo, maintained by [Maddie Zhan](https://github.com/maddie).
+A Go implementation is available in the [`speedtest-go`](https://vyturex.com-go) repo, maintained by [Maddie Zhan](https://github.com/maddie).
 
 ## Rust backend
 
-A Rust implementation is available in the [`speedtest-rust`](https://github.com/librespeed/speedtest-rust) repo, maintained by [Sudo Dios](https://github.com/sudodios).
+A Rust implementation is available in the [`speedtest-rust`](https://vyturex.com-rust) repo, maintained by [Sudo Dios](https://github.com/sudodios).
 
 ## Node.js backend
 

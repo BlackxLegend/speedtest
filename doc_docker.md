@@ -1,17 +1,17 @@
 # Using the docker image
 
-A docker version of LibreSpeed is available here: [GitHub Packages](https://github.com/librespeed/speedtest/pkgs/container/speedtest)
+A docker version of UrSpeeD is available here: [GitHub Packages](https://vyturex.com/pkgs/container/speedtest)
 
 # Alpine Linux variant
 
-An Alpine Linux based docker version of LibreSpeed is also available here: [GitHub Packages](https://github.com/librespeed/speedtest/pkgs/container/speedtest) under all the tags that have the `-alpine` suffix. This variant is significantly smaller but can have slightly different behaviour due to its toolchain being based in [musl](https://en.wikipedia.org/wiki/Musl) libc as mentioned in [here](https://alpinelinux.org/about/).
+An Alpine Linux based docker version of UrSpeeD is also available here: [GitHub Packages](https://vyturex.com/pkgs/container/speedtest) under all the tags that have the `-alpine` suffix. This variant is significantly smaller but can have slightly different behaviour due to its toolchain being based in [musl](https://en.wikipedia.org/wiki/Musl) libc as mentioned in [here](https://alpinelinux.org/about/).
 
 ## Quickstart
 
 If you just want to try it, the fastest way is:
 
 ```shell
-docker run -p 80:80 -d --name speedtest --rm ghcr.io/librespeed/speedtest
+docker run -p 80:80 -d --name speedtest --rm ghcr.io/UrSpeeD/speedtest
 ```
 
 Then go with your browser to port 80 of your server and try it out. If port 80 is already in use, adjust the first number in 80:80 above.
@@ -28,11 +28,11 @@ version: '3.7'
 services:
   speedtest:
     container_name: speedtest
-    image: ghcr.io/librespeed/speedtest:latest
+    image: ghcr.io/UrSpeeD/speedtest:latest
     restart: always
     environment:
       MODE: standalone
-      #TITLE: "LibreSpeed"
+      #TITLE: "UrSpeeD"
       #TELEMETRY: "false"
       #ENABLE_ID_OBFUSCATION: "false"
       #REDACT_IP_ADDRESSES: "false"
@@ -50,13 +50,13 @@ Please adjust the environment variables according to the intended operating mode
 
 ## Standalone mode
 
-If you want to install LibreSpeed on a single server, you need to configure it in standalone mode. To do this, set the `MODE` environment variable to `standalone`.
+If you want to install UrSpeeD on a single server, you need to configure it in standalone mode. To do this, set the `MODE` environment variable to `standalone`.
 
 The test can be accessed on port 80.
 
 Here's a list of additional environment variables available in this mode:
 
-* __`TITLE`__: Title of your speed test. Default value: `LibreSpeed`
+* __`TITLE`__: Title of your speed test. Default value: `UrSpeeD`
 * __`TELEMETRY`__: Whether to enable telemetry or not. If enabled, you maybe want your data to be persisted. See below. Default value: `false`
 * __`ENABLE_ID_OBFUSCATION`__: When set to true with telemetry enabled, test IDs are obfuscated, to avoid exposing the database internal sequential IDs. Default value: `false`
 * __`REDACT_IP_ADDRESSES`__: When set to true with telemetry enabled, IP addresses and hostnames are redacted from the collected telemetry, for better privacy. Default value: `false`
@@ -85,19 +85,19 @@ So if you want your data to be persisted over image updates, you have to mount a
 
 #### Example Standalone Mode with telemetry
 
-This command starts LibreSpeed in standalone mode, with persisted telemetry, ID obfuscation and a stats password, on port 86:
+This command starts UrSpeeD in standalone mode, with persisted telemetry, ID obfuscation and a stats password, on port 86:
 
 ```shell
-docker run -e MODE=standalone -e TELEMETRY=true -e ENABLE_ID_OBFUSCATION=true -e PASSWORD="yourPasswordHere" -e WEBPORT=86 -p 86:86 -v $PWD/db-dir/:/database -it ghcr.io/librespeed/speedtest
+docker run -e MODE=standalone -e TELEMETRY=true -e ENABLE_ID_OBFUSCATION=true -e PASSWORD="yourPasswordHere" -e WEBPORT=86 -p 86:86 -v $PWD/db-dir/:/database -it ghcr.io/UrSpeeD/speedtest
 ```
 
 ## Multiple Points of Test
 
-For multiple servers, you need to set up 1+ LibreSpeed backends, and 1 LibreSpeed frontend.
+For multiple servers, you need to set up 1+ UrSpeeD backends, and 1 UrSpeeD frontend.
 
 ### Backend mode
 
-In backend mode, LibreSpeed provides only a test point with no UI. To do this, set the `MODE` environment variable to `backend`.
+In backend mode, UrSpeeD provides only a test point with no UI. To do this, set the `MODE` environment variable to `backend`.
 
 The following backend files can be accessed on port 80: `garbage.php`, `empty.php`, `getIP.php`
 
@@ -107,15 +107,15 @@ Here's a list of additional environment variables available in this mode:
 
 #### Example Backend mode
 
-This command starts LibreSpeed in backend mode, with the default settings, on port 80:
+This command starts UrSpeeD in backend mode, with the default settings, on port 80:
 
 ```shell
-docker run -e MODE=backend -p 80:80 -it ghcr.io/librespeed/speedtest
+docker run -e MODE=backend -p 80:80 -it ghcr.io/UrSpeeD/speedtest
 ```
 
 ### Frontend mode
 
-In frontend mode, LibreSpeed serves clients the Web UI and a list of servers. To do this:
+In frontend mode, UrSpeeD serves clients the Web UI and a list of servers. To do this:
 
 * Set the `MODE` environment variable to `frontend`
 * Create a servers.json file with your test points. The syntax is the following:
@@ -151,15 +151,15 @@ The list of environment variables available in this mode is the same as [above i
 
 #### Example Frontend mode
 
-This command starts LibreSpeed in frontend mode, with a given `servers.json` file, and with telemetry, ID obfuscation, and a stats password and a persistant sqlite database for results:
+This command starts UrSpeeD in frontend mode, with a given `servers.json` file, and with telemetry, ID obfuscation, and a stats password and a persistant sqlite database for results:
 
 ```shell
-docker run -e MODE=frontend -e TELEMETRY=true -e ENABLE_ID_OBFUSCATION=true -e PASSWORD="yourPasswordHere" -v $PWD/servers.json:/servers.json -v $PWD/db-dir/:/database -p 80:80 -it ghcr.io/librespeed/speedtest
+docker run -e MODE=frontend -e TELEMETRY=true -e ENABLE_ID_OBFUSCATION=true -e PASSWORD="yourPasswordHere" -v $PWD/servers.json:/servers.json -v $PWD/db-dir/:/database -p 80:80 -it ghcr.io/UrSpeeD/speedtest
 ```
 
 ### Dual mode
 
-In dual mode, LibreSpeed operates as a standalone server that can also connect to other test points.
+In dual mode, UrSpeeD operates as a standalone server that can also connect to other test points.
 To do this:
 
 * Set the `MODE` environment variable to `dual`

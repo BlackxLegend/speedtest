@@ -200,10 +200,15 @@ function initUI(){
 }
 </script>
 <style type="text/css">
+
+	a{
+		text-decoration: none;
+	}
+
 	html,body{
 		border:none; padding:0; margin:0;
 		background:#FFFFFF;
-		color:#202020;
+		color:#202042;
 	}
 	body{
 		text-align:center;
@@ -237,13 +242,34 @@ function initUI(){
 		color:#6060AA;
 		background-color:rgba(0,0,0,0);
 		border:0.15em solid #6060FF;
-		border-radius:0.3em;
+		border-radius:9%;
 		transition:all 0.3s;
 		box-sizing:border-box;
 		width:8em; height:3em;
 		line-height:2.7em;
 		cursor:pointer;
 		box-shadow: 0 0 0 rgba(0,0,0,0.1), inset 0 0 0 rgba(0,0,0,0.1);
+	}
+	#startStopBtn{
+			font-size: 1rem;
+			font-weight: bold;
+		background: linear-gradient(90deg, 
+		red, orange, yellow, green, blue, violet, skyblue);
+			background-size: 400%;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			animation: rainbow 3s ease-in-out infinite;
+	}
+	@keyframes rainbow {
+			0% {
+					background-position: 0% 50%;
+			}
+			50% {
+					background-position: 100% 50%;
+			}
+			100% {
+					background-position: 0% 50%;
+			}
 	}
 	#startStopBtn:hover{
 		box-shadow: 0 0 2em rgba(0,0,0,0.1), inset 0 0 1em rgba(0,0,0,0.1);
@@ -266,10 +292,17 @@ function initUI(){
 		font-size:1em;
 		padding:0.2em;
 	}
-	#test{
-		margin-top:2em;
-		margin-bottom:12em;
+	#test {
+    margin-top: 2em;
+    margin-bottom: 3em;
 	}
+	.hmpg-pt {
+    margin-top: 35px;
+	}
+	.michael{
+		color: white;
+	}
+	
 	div.testArea{
 		display:inline-block;
 		width:16em;
@@ -341,20 +374,29 @@ function initUI(){
 		height:auto;
 		margin: 0.25em 0;
 	}
-	#privacyPolicy{
-        position:fixed;
-        top:2em;
-        bottom:2em;
-        left:2em;
-        right:2em;
-        overflow-y:auto;
-        width:auto;
-        height:auto;
-        box-shadow:0 0 3em 1em #000000;
-        z-index:999999;
-        text-align:left;
-        background-color:#FFFFFF;
-        padding:1em;
+	#privacyPolicy {
+    position: fixed;
+    top: 8em;
+    bottom: 8em;
+    left: 6em;
+    right: 6em;
+    overflow-y: auto;
+    width: auto;
+    height: auto;
+    box-shadow: 0 0 3em 1em #000000;
+    z-index: 999999;
+    text-align: left;
+    /* background-color: #FFFFFF; */
+    padding: 1em;
+	}
+	#privacyPolicy {
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 10px;
+    /* padding: 20px; */
+    backdrop-filter: blur(2px);
+    filter: blur-15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	}
 	a.privacy{
         text-align:center;
@@ -369,6 +411,8 @@ function initUI(){
     div.closePrivacyPolicy a.privacy {
         padding: 1em 3em;
     }
+
+	
 	@media all and (max-width:40em){
 		body{
 			font-size:0.8em;
@@ -402,7 +446,7 @@ function initUI(){
 	}
 	@media all and (prefers-color-scheme: dark){
 		html,body,#loading{
-			background:#202020;
+			background:#202042;
 			color:#F4F4F4;
 		}
 		h1{
@@ -411,20 +455,20 @@ function initUI(){
 		a{
 			color:#9090FF;
 		}
-		#privacyPolicy{
+		/* #privacyPolicy{
 			background:#000000;
-		}
+		} */
 		#resultsImg{
 			filter: invert(1);
 		}
 	}
 </style>
-<title>LibreSpeed</title>
+<title>UrSpeeD</title>
 </head>
 <body onload="initServers()">
-<h1>LibreSpeed</h1>
+<h1>UrSpeeD</h1>
 <div id="loading" class="visible">
-	<p id="message"><span class="loadCircle"></span>Selecting a server...</p>
+	<p id="message"><span class="loadCircle"></span>Loading.....</p>
 </div>
 <div id="testWrapper" class="hidden">
 	<div id="startStopBtn" onclick="startStop()"></div><br/>
@@ -436,12 +480,12 @@ function initUI(){
 		<div class="testGroup">
             <div class="testArea2">
 				<div class="testName">Ping</div>
-				<div id="pingText" class="meterText" style="color:#AA6060"></div>
+				<div id="pingText" class="meterText" style="color:#ef0000"></div>
 				<div class="unit">ms</div>
 			</div>
 			<div class="testArea2">
 				<div class="testName">Jitter</div>
-				<div id="jitText" class="meterText" style="color:#AA6060"></div>
+				<div id="jitText" class="meterText" style="color:#ef0000"></div>
 				<div class="unit">ms</div>
 			</div>
 		</div>
@@ -469,7 +513,11 @@ function initUI(){
 			<img src="" id="resultsImg" />
 		</div>
 	</div>
-	<a href="https://github.com/librespeed/speedtest">Source code</a>
+	<p>Test results may vary due to server locations, network conditions, or measurement methods. Consistently low results with UrSpeeD may indicate server issues or network factors.</p>
+	<p class="hmpg-pt">Visit our <a href="https://vyturex.com">home page</a> for more information.</p>
+	<div class="michael">
+		<p>Copyright © 2024 Your Michael De Santa. All Rights Reserved</p>
+	</div>
 </div>
 <div id="privacyPolicy" style="display:none">
     <h2>Privacy Policy</h2>
@@ -503,14 +551,15 @@ function initUI(){
     </p>
     <h4>Data removal</h4>
     <p>
-        If you want to have your information deleted, you need to provide either the ID of the test or your IP address. This is the only way to identify your data, without this information we won't be able to comply with your request.<br/><br/>
-        Contact this email address for all deletion requests: <a href="mailto:PUT@YOUR_EMAIL.HERE">TO BE FILLED BY DEVELOPER</a>.
+        If you want to have your information deleted, you need to provide either the ID of the test or your IP address. This is the only way to identify your data, without this information we won't be able to comply with your request.
+        Contact this email address for all deletion requests: <a href="mailto:alamsyedshefaul@gmail.com">Email Me</a>
     </p>
-    <br/><br/>
+    
     <div class="closePrivacyPolicy">
-        <a class="privacy" href="#" onclick="I('privacyPolicy').style.display='none'">Close</a>
+        <a class="clsmfc" href="#" onclick="I('privacyPolicy').style.display='none'"><p>Close</p></a>
     </div>
-    <br/>
+
+    
 </div>
 </body>
 </html>
